@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<head>
+ 
+ <title>Employee Task Tracker</title>
+ <style>
+    body {
+        text-align: center;
+    }
+    img {
+       
+        margin: 0 auto;
+        height: 70px;
+    }
+</style>
+</head>
+
+<body>
+
+ <h1 style="text-align: center; background-color: #f1dede;">Assign Task</h1>
+ 
+
+ <form style="max-width: 800px; margin: 0 auto; padding: 20px; border: 1px solid #540606; border-radius: 10px; background-color: #4ca740;">
+    <img src="logo.png"alt="Logo">
+ <label for="employeeName" style="display: block; margin-bottom: 5px;">Employee Name:</label>
+<input type="text" id="employeeName" name="employeeName" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+
+ <label for="taskTitle"  margin-bottom: 5px;>Task Title:</label>
+ <input type="text" id="taskTitle" name="taskTitle" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+
+ <label for="taskDescription"  margin-bottom: 5px;>Task Description:</label>
+ <textarea id="taskDescription" name="taskDescription" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;"></textarea>
+
+ <label for="dueDate"  margin-bottom: 5px;>Due Date:</label>
+ <input type="date" id="dueDate" name="dueDate" required style="width: 100%; padding: 8px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+
+<button type="submit" style="width: 100%; padding: 10px; background-color: #090909; color: white; border: none; border-radius: 5px; cursor: pointer;">Assign Task</button>
+ </form>
+
+ <br><br>
+
+ <h2 style="text-align: center; color: #090909;">Employee Tasks</h2>
+ <table style="width: 80%; margin: 0 auto; border-collapse: collapse; text-align: center; font-size: 16px;">
+ <thead>
+ <tr style="background-color: #4CAF50; color: white;">
+ <th style="border: 1px solid #ddd; padding: 10px;">Employee Name</th>
+ <th style="border: 1px solid #ddd; padding: 10px;" colspan="2">Task Details</th>
+ <th style="border: 1px solid #ddd; padding: 10px;">Due Date</th>
+ </tr>
+ <tr style="background-color: #f2f2f2;">
+ <th style="border: 1px solid #ddd; padding: 10px;"></th>
+ <th style="border: 1px solid #ddd; padding: 10px;">Task Title</th>
+ <th style="border: 1px solid #ddd; padding: 10px;">Task Description</th>
+ <th style="border: 1px solid #ddd; padding: 10px;"></th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+<td style="border: 1px solid #ddd; padding: 10px;" rowspan="2">Aishuk</td>
+ <td style="border: 1px solid #ddd; padding: 10px;">Task1</td>
+ <td style="border: 1px solid #ddd; padding: 10px;">Team meeting</td> 
+ <td style="border: 1px solid #ddd; padding: 10px;">2024-12-26</td>
+
+ <tr>
+ <td style="border: 1px solid #ddd; padding: 10px;">Task2</td>
+ <td style="border: 1px solid #ddd; padding: 10px;">Work on scheduling time</td>
+ <td style="border: 1px solid #ddd; padding: 10px;">2024-12-27</td>
+ </tr>
+</tbody>
+ </table>
+
+</body>
+
+</html>
