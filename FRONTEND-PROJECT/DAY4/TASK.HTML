@@ -1,14 +1,20 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Idhazhini</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-..." crossorigin="anonymous">
-
     <style>
         body {
             font-family: 'Times New Roman', Times, serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4; 
+            color: #333;
         }
+        
+        
         .content {
             display: flex;
             align-items: center;
@@ -18,31 +24,119 @@
             font-size: x-large;
             font-style: oblique;
             background-color: wheat;
+            border-bottom: 2px solid #ddd;
         }
+
         .text {
             flex: 1;
         }
+
         .image {
             flex: 1;
             text-align: right;
         }
+
         h1 {
             color: black;
         }
+
         h2 {
             font-size: 50px;
             color: black;
             margin: 0px 0;
         }
+
         img {
             max-width: 300px;
             height: auto;
         }
-        .carousel {
+
+        .icon {
+            max-width: 50px;
+        }
+
+        
+        .flip-container {
+            perspective: 1000px;
+        }
+
+        .flip-card {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+            position: relative;
+        }
+
+        .flip-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        
+        .poster {
             text-align: center;
             padding: 20px;
-            background-color: lightgray;
+            background-color: #eaeaea; 
+            border: 1px solid #ccc;
+            font-family: 'Arial', sans-serif;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
+
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #777;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: #333;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .details {
+            font-size: 18px;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        .highlight {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e67e22;
+            margin-top: 20px;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .carousel-container {
+            text-align: center;
+            padding: 20px;
+        }
+
         .carousel-button {
             background-color: rgb(8, 9, 9);
             color: white;
@@ -51,42 +145,84 @@
             border: none;
             cursor: pointer;
             font-size: 16px;
+            
         }
+
         .carousel-button:hover {
             background-color: rgb(18, 19, 19);
         }
     </style>
-    <script>
-        function navigateToPage(pageUrl) {
-            window.location.href = pageUrl;
-        }
-    </script>
 </head>
 <body>
-    <center>
-        <h1>Idhazhini's 5th Birthday</h1>
-    </center>
-    <hr>
-  
-    <center>
-        <p style="font-size: xx-large;">BIG BASH PARTY</p>
-    <i class="fa fa-birthday-cake" aria-hidden="true"></i>
-</center>
-    <hr>
-    <div class="content">
-        <div class="text">
-            <h2>The</h2>
-            <h2>Big day</h2>
-            <h2>Arrives!...</h2>
-            <p>Join US SUNDAY!!</p>
-            <p>It's baby's 5th birthday. We have arranged the birthday party in Pucket Hall. Kindly come and bless the birthday baby. Thanks!!!</p>
-        </div>
-        <div class="image">
-            <img src="BIRTHDAY-BABY.jpg" alt="Birthday Baby">
+    <div class="flip-container">
+        <div class="flip-card" id="flipCard">
+            
+            <div class="flip-card-front">
+                <center>
+                    <h1>Idhazhini's 5th Birthday</h1>
+                </center>
+                <hr>
+                <center>
+                    <p style="font-size: xx-large;">BIG BASH PARTY</p>
+                    <div class="icon">
+                        <i class="fa fa-birthday-cake" aria-hidden="true" style="font-size: 50px;color: black;"></i>
+                    </div>
+                </center>
+                <hr>
+                <div class="content">
+                    <div class="text">
+                        <h2>The</h2>
+                        <h2>Big day</h2>
+                        <h2>Arrives!...</h2>
+                        <p>Join US SUNDAY!!</p>
+                        <p>It's baby's 5th birthday. We have arranged the birthday party in Pucket Hall. Kindly come and bless the birthday baby. Thanks!!!</p>
+                    </div>
+                    <div class="image">
+                        <img src="BIRTHDAY-BABY.jpg" alt="Birthday Baby">
+                    </div>
+                </div>
+                <center>
+                <div class="carousel">
+                    <button class="carousel-button" onclick="flipCard()">Next</button>
+                </div>
+            </div>
+        </center>
+            
+            <div class="flip-card-back">
+                <div class="poster">
+                    <div class="title">IDHAZHINI</div>
+                    <div class="subtitle">Meaning - Sweet lips and soft like flower petals</div>
+                    <div class="section">
+                        <div class="section-title">Born On:</div>
+                        <div class="details">
+                            <span>Date:</span> 1st<br>
+                            <span>Month:</span> August<br>
+                            <span>Year:</span> 2019
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="section-title">My Nick Name:</div>
+                        <div class="details">
+                            <span>BUBAALU</span>
+                        </div>
+                    </div>
+                    <div class="highlight">Our little cutie turns 5!</div>
+                    <div class="footer">Join us for the celebration!</div>
+                    <p>AISHWARYAK</p>
+                    <p>27/07/2024</p>
+                </div>
+                <div class="carousel-container">
+                    <button class="carousel-button" onclick="flipCard()">Back</button>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="carousel">
-        <button class="carousel-button" onclick="navigateToPage('NEXT.html')">&lt;</button>
-    </div>
+
+    <script>
+        function flipCard() {
+            const card = document.getElementById("flipCard");
+            card.classList.toggle("flipped");
+        }
+    </script>
 </body>
 </html>
