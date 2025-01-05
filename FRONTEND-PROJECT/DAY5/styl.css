@@ -1,0 +1,592 @@
+body{
+  font-family: Arial, sans-serif;
+  margin: 0px;
+}
+.body{
+  position: relative;
+}
+.nav-bar-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+.nav-bar{
+  background-color: #3D405B;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+  
+}
+.menu{
+  display: flex;
+  flex-direction: row;
+}
+.nav-menu{
+  margin: 10px;
+  color: white;
+  text-decoration: none;
+}
+.menu-bar{
+  display: flex;
+  list-style: none;
+}
+.container{
+  margin-left: 91px;
+  margin-right: 91px;
+}
+.logo{
+  width: 48px;
+  height: 48px;
+  filter: brightness(0) invert(1);
+}
+.brand-log{
+  display: flex;
+  color:white;
+  align-items: center;
+}
+.br-name{
+  white-space: pre-line;
+  margin-left: 2px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.br-name-sm{
+  font-size: 12px;
+}
+
+.a-btn{
+  background: transparent;
+  color: #f2cc8f;
+  border: 2px solid #f2cc8f;
+  padding: 10px 20px;
+  border-radius: 22px;
+  cursor: pointer;
+}
+.a-btn:hover{
+  background: #F2CC8F;
+  color: #ffffff;
+  border-color: transparent;
+}
+
+.btn:hover{
+  background: #E07A5F;
+  color: #ffffff;
+  border-color: transparent;
+}
+
+.section-1{
+  background-image: url(https://templatemo.com/templates/templatemo_587_tiya_golf_club/images/anna-rosar-ZxFyVBHMK-c-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  min-height: 250px;
+  margin-bottom: -90px;
+}
+.section-1 svg{
+  position: absolute;
+  top: 0px;
+  right: 0;
+  left: 0;
+
+}
+.inner-section{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+.section-1 + .container svg{
+  top: auto;
+  bottom: -1px;
+}
+.btn{
+  background-color: #f2cc8f;
+  color: white;
+  padding: 10px 10px;
+  border: 2px solid transparent;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.hd{
+  font-size: 40px;
+  color: white;
+}
+.overlay{
+  top: 0px;
+  background-color: #3D405B;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0.5;
+}
+.youtube{
+  border-radius: 20px;
+}
+.btn-section{
+  display: flex;
+  gap: 10px;
+  color: white;
+  align-items: center;
+}
+.section-2{
+  position: absolute;
+  width: 100%;
+  margin-top: 100px;
+}
+.hd-1{
+  font-size: 2rem;
+}
+.about-container{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+.con-left{
+  width: 40%;
+}
+p{
+  color: #717275;
+  font-size: 18px;
+}
+.ab-card-img{
+  height: 200px;
+  border-radius: 20px;
+}
+.ab-card-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.con-right-innerContainer{
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+  align-items: center;
+}
+.section-3{
+  background-image: url("https://templatemo.com/templates/templatemo_587_tiya_golf_club/images/frederik-rosar-NDSZcCfnsbY-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+ 
+  padding-top: 100px;
+  padding-bottom: 100px;
+  min-height: 250px;
+  margin-top: 530px;
+  margin-bottom: -70px;
+}
+.news-card{
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.75);
+  padding: 50px;
+  border-radius: 30px;
+}
+.news-header{
+  font-size: 36px;
+}
+.input-outer{
+  background-color: white;
+  width: 80%;
+  padding: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 53px;
+}
+.input-fld{
+  width: 63%;
+  height: 40px;
+  border: none;
+  font-size: 18px;
+  margin-left: -21px;    
+}
+.input-fld{
+  outline: none;
+  border: none;
+}
+.btn-2{
+  font-size: 18px;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+.section-4{
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+table{
+  caption-side: bottom;
+  border-collapse: collapse;
+}
+table thead{
+  
+  padding: 10px;
+  color: white;
+}
+th{
+  padding: 31px 41px;
+  background-color: #3D405B;
+}
+.tb-row-left{
+  border-top-left-radius: 15px;
+  
+}
+.tb-row-right{
+  border-top-right-radius: 15px;
+}
+td{
+  padding: 18px 40px;
+}
+.member-container{
+  display: flex;
+  justify-content: space-around;
+}
+.icon-tk{
+  color: #81B29A;
+}
+.icon-cl{
+  color: red;
+}
+table tbody tr:nth-child(even) {
+  background-color: #fff3e1; 
+}
+.form-card{
+  background-color: #3D405B;
+  width: 100%;
+  padding: 35px;
+  color: white;
+  border-radius: 10px;
+}
+.member-container .right{
+  width: 41%;
+
+}
+.form-outer{
+  width: 100%;
+  padding: 4px;
+  margin-bottom: 18px;
+}
+.form-input{
+  height: 50px;
+  font-size: 17px;
+  margin-left: 13px;
+  width: 91%;
+}
+.form-txt-area{
+  height: 80px;
+  border: none;
+  padding: 1px;
+}
+.textarea-outer{
+  height: 100px;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 18px;
+}
+.textarea--outer{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 23px;
+  padding-right: 23px;
+  margin-left: 4px;
+  width: 91%;
+  border-radius: 22px;
+  margin-bottom: 10px;
+}
+.btn-big{
+  width: 100%;
+}
+.section-5{
+  background-color: #F4F1DE;
+  padding-bottom: 50px;
+}
+.event-card{
+  padding-left: 34px;
+  padding-right: 34px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.ev-date{
+  background-color: #81B29A;
+  width: fit-content;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 24px;
+  width: 78px;
+  text-align: center;
+}
+.ev-date    h1{
+  font-size: 3rem;
+  margin: 0px;
+  font-weight: 100;
+}
+.ev-date p{
+  margin: 0px;
+  color: white;
+}
+.event-card-body{
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+.ev-inner-container{
+  display: flex;
+  gap: 36px;
+}
+.ev-img{
+  height: 240px;
+  border-radius: 12px;
+}
+.ev-loc{
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: -13px;
+}
+.ev-location-cn{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ev-loc{
+  font-weight: 100;
+}
+.card-btn{
+  font-weight: 800;
+}
+.ev-hd{
+  font-size: 2rem;
+  padding-top: 83px;
+  padding-bottom: 31px;
+}
+.card-active{
+  background-color: white;
+  padding-left: 34px;
+  padding-right: 34px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.fild-fir{
+  display: flex;
+  margin-left: -14px
+}
+.contact-container{
+  display: flex;
+  padding: 30px;
+}
+.right-contact{
+  width: 50%;
+}
+.cont-input{
+  border: 1px solid black;
+  border-radius: 24px;
+  padding-left: 20px;
+}
+.cont-image{
+  height: 245px;
+  margin-left: 81px;
+  margin-top: 83px;
+}
+.cont-hd{
+  font-size: 2rem;
+}
+.ft-logo{
+  width: 48px;
+  height: 48px;
+}
+.ft-name{
+  color: black;
+}
+.footer-container{
+  display: flex;
+  justify-content: space-between;
+  
+}
+.footer{
+  padding: 60px;
+}
+.ft-1{
+  display: flex;
+  gap: 30px;
+}
+.model-overly{
+  height: 100%;
+  background-color: #adb5bd;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  width: 100%;
+  opacity: .5;
+}
+.model{
+  background-color: #81B29A;
+  width: 22%;
+  height: 101vh;
+  position: fixed;
+  z-index: 1040;
+  top: 0;
+  right: 0;
+  padding-top: 30px;
+  padding-left: 38px;
+  padding-right: 38px;
+}
+.model h1{
+  font-size: 1.5rem;
+  font-weight: 100;
+}
+.model-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.md-cl{
+  font-size: 1.5rem;
+  font-weight: 100;
+  cursor: pointer;    
+}
+.mod-input{
+  margin-left: 0;
+  margin-top: 11px;
+  border: none;
+}
+.mod-input:focus{
+  border: 1px black solid !important;
+}
+.model-field{
+  margin-top: 14px;
+}
+.mod-ck{
+  border-radius: .25em;
+}
+.form-footer{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+.md-btn{
+  padding-left: 25px;
+  padding-right: 25px;
+  font-weight: 700;
+  font-size: 1rem;
+}
+.forgot-md-link{
+  color: #3D405B;
+  text-decoration: none;
+}
+.hide{
+  display: none;
+}
+.showWithAni{
+  display: block;
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+.show{
+  display: block;
+}
+.left-contact{
+  position: relative;
+
+}
+.footer-container .left{
+   width: 40%;
+}
+.address{
+  position: absolute;
+  top: 114px;
+  left: 256px;
+  background-color: #3D405B;
+  border-radius: 17px;
+}
+.address-body{
+  
+  color: white;
+  padding: 32px;
+  line-height: 17px;
+  text-align: center;
+  
+}
+.address-body p{
+  color: white;
+}
+.address-footer{
+  background-color: #E07A5F;
+  position: absolute;
+  width: 100%;
+  top: 138px;
+  padding-bottom: 11px;
+  height: 46px;
+  text-align: center;
+  border-bottom-left-radius: 17px;
+  border-bottom-right-radius: 17px;
+  color: white;
+  cursor: pointer;
+}
+
+.address-footer:hover{
+  background-color: #F2CC8F;
+  
+}
+.social-list{
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 21px;
+  font-size: 19px;
+  margin-left: -40px;
+}
+.social-icon{
+  background-color: #3D405B;
+  padding-top: 7px;
+  border-radius: 50%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 7px;
+  color: white;
+}
+.social-icon:hover{
+  background-color: #81B29A;
+}
+.ft-title{
+  font-size: 1.5rem;
+  font-weight: 100;
+  color: #3D405B;
+}
+.ft-bottom{
+  margin-top: 156px;
+}
+.ft-bottom p{
+  color: white;
+  font-weight: 500;
+}
+.link-color{
+  text-decoration: none;
+  color: #3D405B;
+}
+.model-svg{
+  position: absolute;
+  left: 0px;
+  bottom: 39px;
+}
+.svg-footer{
+  position: absolute;
+  left: 0;
+  margin-top: -93px;
+}
