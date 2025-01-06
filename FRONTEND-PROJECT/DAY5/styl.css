@@ -46,13 +46,13 @@ body{
   color:white;
   align-items: center;
 }
-.br-name{
+.name{
   white-space: pre-line;
   margin-left: 2px;
   font-size: 20px;
   font-weight: bold;
 }
-.br-name-sm{
+.name-na{
   font-size: 12px;
 }
 
@@ -76,7 +76,7 @@ body{
   border-color: transparent;
 }
 
-.section-1{
+.content-1{
   background-image: url(https://templatemo.com/templates/templatemo_587_tiya_golf_club/images/anna-rosar-ZxFyVBHMK-c-unsplash.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -87,19 +87,19 @@ body{
   min-height: 250px;
   margin-bottom: -90px;
 }
-.section-1 svg{
+.content-1 svg{
   position: absolute;
   top: 0px;
   right: 0;
   left: 0;
 
 }
-.inner-section{
+.division{
   position: relative;
   display: flex;
   justify-content: space-between;
 }
-.section-1 + .container svg{
+.content-1 + .container svg{
   top: auto;
   bottom: -1px;
 }
@@ -132,7 +132,7 @@ body{
   color: white;
   align-items: center;
 }
-.section-2{
+.content-2{
   position: absolute;
   width: 100%;
   margin-top: 100px;
@@ -145,7 +145,7 @@ body{
   justify-content: space-between;
   margin-top: 50px;
 }
-.con-left{
+.club{
   width: 40%;
 }
 p{
@@ -161,14 +161,14 @@ p{
   justify-content: space-between;
   align-items: center;
 }
-.con-right-innerContainer{
+.right{
   display: flex;
   justify-content: space-between;
   gap: 22px;
   align-items: center;
 }
-.section-3{
-  background-image: url("https://templatemo.com/templates/templatemo_587_tiya_golf_club/images/frederik-rosar-NDSZcCfnsbY-unsplash.jpg");
+.content-3{
+  background-image: url("	https://templatemo.com/templates/templatemo_587_tiya_golf_club/images/frederik-rosar-NDSZcCfnsbY-unsplash.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -179,7 +179,7 @@ p{
   margin-top: 530px;
   margin-bottom: -70px;
 }
-.news-card{
+.card{
   width: 50%;
   background-color: rgba(255, 255, 255, 0.75);
   padding: 50px;
@@ -213,7 +213,7 @@ p{
   padding-left: 18px;
   padding-right: 18px;
 }
-.section-4{
+.content-4{
   margin-top: 100px;
   margin-bottom: 100px;
 }
@@ -299,7 +299,7 @@ table tbody tr:nth-child(even) {
 .btn-big{
   width: 100%;
 }
-.section-5{
+.content-5{
   background-color: #F4F1DE;
   padding-bottom: 50px;
 }
