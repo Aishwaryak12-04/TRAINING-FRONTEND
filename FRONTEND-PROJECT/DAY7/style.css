@@ -1,0 +1,219 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+background-image: url("	https://templatemo.com/templates/templatemo_589_lugx_gaming/assets/images/banner-bg.jpg");
+    color: white;
+    padding-top: 30px;
+}
+*{
+    text-decoration: none;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+nav ul li a.active, nav ul li a:hover {
+    text-decoration: underline;
+}
+
+nav ul li .sign-in {
+    background-color: #ff4d4d;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-image: url(	https://templatemo.com/templates/templatemo_589_lugx_gaming/assets/images/banner-bg.jpg);
+    color: white;
+    height: 100vh;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.hero .content {
+    max-width: 50%;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.hero h2 {
+    font-size: 28px;
+    margin: 10px 0;
+}
+
+.hero .highlight {
+    text-decoration: underline;
+    color: #ff4d4d;
+}
+
+.hero p {
+    font-size: 16px;
+    margin: 20px 0;
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+}
+
+.search-bar input {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #ff4d4d;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.promo {
+    position: relative;
+    text-align: center;
+}
+
+.promo img {
+    max-width: 300px;
+    border-radius: 10px;
+}
+
+.promo .price-tag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.promo .discount {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #ff4d4d;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+/* Features Section */
+.features-container {
+    position: relative;
+    background: white;
+    padding: 50px 20px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+    margin-top: -80px; /* Slightly overlaps the hero section */
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+    gap: 100px; /* Space between cards */
+    max-width: 1px;
+    margin: 0 auto;
+    
+}
+
+.feature-card {
+  
+        padding: 35px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+        border-radius: 25px;
+        background-color: #fff;
+        text-align: center;
+    
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.feature-card .icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 15px;
+    background-color: #007bff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-card .icon img {
+    width: 40px;
+    height: 40px;
+}
+
+.feature-card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0 0;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .features {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .features {
+        grid-template-columns: 1fr; /* Single column for very small screens */
+    }
+}

@@ -1,6 +1,4 @@
-let i = 1;
 let loop = document.getElementById("loop");
-while (i <= 10) {
-    loop.innerHTML += `${i}<br>`;
-    i++;
+for (let i = 1; i <= 10; i++) {
+ loop.innerHTML += `${i}<br>`;
 }
