@@ -6,44 +6,86 @@
   <title>JavaScript Functions with HTML Interaction</title>
   <style>
     body {
-        font-family: 'Courier New', Courier, monospace;
-        margin: 20px;
-        background-color: rgb(247, 247, 201);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      color: #212529;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
     }
-    .output {
-        margin-top: 20px;
-        font-weight: bold;
+    .container {
+      background: #ffffff;
+      padding: 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      width: 400px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 1.5rem;
+      color: #495057;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      color: #6c757d;
     }
     input {
-        padding: 10px 0px 10px 20px;
-        width: 300px;
-        background-color: beige;
+      padding: 10px;
+      width: calc(100% - 20px);
+      margin-bottom: 20px;
+      border: 1px solid #ced4da;
+      border-radius: 5px;
+      font-size: 1rem;
     }
     button {
-        padding: 10px;
-        color: #fff;
-        background-color: rgb(12, 70, 120);
-        width: 300px;
+      display: block;
+      padding: 10px;
+      width: calc(100% - 20px);
+      margin: 10px auto;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: white;
+      background: #007bff;
+      transition: background 0.3s;
     }
     button:hover {
-        background-color: rgb(225, 68, 68);
-        cursor: pointer;
+      background: #0056b3;
+    }
+    .output {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f8f9fa;
+      border: 1px solid #ced4da;
+      border-radius: 5px;
+      font-size: 1rem;
+      color: #495057;
     }
   </style>
 </head>
 <body>
 
-  <h1>JavaScript Functions with HTML Interaction</h1>
+  <div class="container">
+    <h1>JavaScript Interaction</h1>
 
-  <label for="inputText">Enter your sentence:</label>
-  <input type="text" id="inputText" placeholder="Enter text here"><br><br>
+    <label for="inputText">Enter your sentence:</label>
+    <input type="text" id="inputText" placeholder="Type something here">
 
-  <button data-action="largestWord">Find Largest Word</button><br><br>
-  <button data-action="replaceNames">Replace Names by 'CHANGED'</button><br><br>
-  <button data-action="replaceEvenWords">Replace Even Words by 'EVEN'</button><br><br>
-  <button data-action="removeDuplicates">Remove Duplicate Characters</button><br><br>
+    <button data-action="largestWord">Find Largest Word</button>
+    <button data-action="replaceNames">Replace Names by 'CHANGED'</button>
+    <button data-action="replaceEvenWords">Replace Even Words by 'EVEN'</button>
+    <button data-action="removeDuplicates">Remove Duplicate Characters</button>
 
-  <div class="output" id="output"></div>
+    <div class="output" id="output">Output will appear here</div>
+  </div>
 
   <script>
     // Function to find the largest word in a string
@@ -102,7 +144,7 @@
 
     // Event listener for button actions
     document.querySelectorAll('button').forEach(button => {
-      button.addEventListener('click', function() {
+      button.addEventListener('click', function () {
         const inputText = document.getElementById('inputText').value;
         const actionType = this.getAttribute('data-action');
         let resultText;
