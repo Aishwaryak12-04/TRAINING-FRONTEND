@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Solutions</title>
+</head>
+<body>
+  <script>
+    // 1. Sort array by age
+    const employees = [
+      { name: 'John', age: 28 },
+      { name: 'Anna', age: 22 },
+      { name: 'Mike', age: 32 },
+    ];
+    employees.sort((a, b) => a.age - b.age);
+    console.log(employees);
+
+    // 2. Group numbers into odd and even
+    const nums = [1, 2, 3, 4, 5, 6];
+    const grouped = nums.reduce((acc, num) => {
+      num % 2 === 0 ? acc.even.push(num) : acc.odd.push(num);
+      return acc;
+    }, { odd: [], even: [] });
+    console.log(grouped);
+
+    // 3. Remove duplicate objects by id
+    const data = [{ id: 1, name: 'A' }, { id: 2, name: 'B' }, { id: 1, name: 'C' }];
+    const uniqueData = [];
+    const ids = new Set();
+    data.forEach(item => {
+      if (!ids.has(item.id)) {
+        uniqueData.push(item);
+        ids.add(item.id);
+      }
+    });
+    console.log(uniqueData);
+
+    // 4. Find most frequent element
+    const arr = [1, 2, 2, 3, 3, 3];
+    const freqMap = arr.reduce((acc, num) => {
+      acc[num] = (acc[num] || 0) + 1;
+      return acc;
+    }, {});
+    const mostFrequent = Object.keys(freqMap).reduce((a, b) => freqMap[a] > freqMap[b] ? a : b);
+    console.log(Number(mostFrequent));
+
+    // 5. Find common elements
+    const arr1 = [1, 2, 3];
+    const arr2 = [2, 3, 4];
+    const common = arr1.filter(num => arr2.includes(num));
+    console.log(common);
+
+    // 6. Transform array into key-value map
+    const arrToMap = [{ id: 1, name: 'A' }, { id: 2, name: 'B' }];
+    const map = Object.fromEntries(arrToMap.map(item => [item.id, item.name]));
+    console.log(map);
+
+    // 7. Get elements that appear only once
+    const uniqueArr = [1, 2, 2, 3, 4, 4, 5];
+    const uniqueElements = uniqueArr.filter(num => uniqueArr.indexOf(num) === uniqueArr.lastIndexOf(num));
+    console.log(uniqueElements);
+
+    // 8. Convert object into array of [key, value] pairs
+    const obj = { a: 1, b: 2 };
+    const objToArray = Object.entries(obj);
+    console.log(objToArray);
+
+    // 9. Filter keys in an object
+    const objToFilter = { a: 1, b: 2, c: 3 };
+    const filteredObj = Object.fromEntries(Object.entries(objToFilter).filter(([key]) => key !== 'c'));
+    console.log(filteredObj);
+
+    // 10. Merge arrays and remove duplicates
+    const arrA = [1, 2, 3, 5];
+    const arrB = [4, 7];
+    const c = 6;
+    const mergedArray = [...arrA, ...arrB, c].filter((val, index, self) => self.indexOf(val) === index);
+    console.log(mergedArray);
+  </script>
+</body>
+</html>
