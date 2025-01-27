@@ -1,0 +1,21 @@
+
+<input id="inputboxx" onkeyup="update()">
+<button onclick="update()">btn</button>
+<h1 id="result"></h1>
+<style>
+    
+    #inputboxx{
+        background-color: rgb(150, 9, 112);
+    }
+    #result{
+        background-color: red;
+            }
+</style>
+<script>
+    var inputboxx = document.getElementById("inputboxx")
+    var result = document.getElementById("result")
+    function update(){
+        result.textContent=inputboxx.value
+    }
+</script>
+</div>

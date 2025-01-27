@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management Form</title>
+    <style>
+        .head {
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(88, 12, 89, 0.1);
+        }
+
+        .form-container label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .form-container input, 
+        .form-container select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .submit-btn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+
+        .button {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .radio-group, .checkbox-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .action-btn {
+            padding: 5px 10px;
+            margin: 2px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .edit-btn {
+            background-color: #ffc107;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="head">
+        <h1>STUDENT MANAGEMENT FORM</h1>
+    </div>
+
+    <div class="form-container">
+        <form id="studentForm">
+            <label for="Name">Name</label>
+            <input type="text" id="Name" placeholder="Enter name">
+            <div id="nameError" class="error"></div>
+
+            <label for="Age">Age</label>
+            <input type="number" id="Age" placeholder="Enter age">
+            <div id="ageError" class="error"></div>
+
+            <label for="phonenumber">Phone Number</label>
+            <input type="number" id="phonenumber" placeholder="Enter phone number">
+            <div id="phoneError" class="error"></div>
+
+            <label>Gender</label>
+            <div class="radio-group">
+                <input type="radio" id="male" name="gender" value="Male">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="Female">
+                <label for="female">Female</label>
+            </div>
+            <div id="genderError" class="error"></div>
+
+            <label>Subject</label>
+            <div class="checkbox-group">
+                <input type="checkbox" id="math" name="subject" value="Math">
+                <label for="math">Math</label>
+                <input type="checkbox" id="science" name="subject" value="Science">
+                <label for="science">Science</label>
+                <input type="checkbox" id="history" name="subject" value="History">
+                <label for="history">History</label>
+            </div>
+            <div id="subjectError" class="error"></div>
+
+            <label for="dob">Date of Birth</label>
+            <input type="text" id="dob" placeholder="Enter DOB (YYYY-MM-DD)">
+            <div id="dobError" class="error"></div>
+
+            <label for="location">Location</label>
+            <select id="location">
+                <option value="">Select location</option>
+                <option value="CHENNAI">CHENNAI</option>
+                <option value="BANGALORE">BANGALORE</option>
+                <option value="COIMBATORE">COIMBATORE</option>
+            </select>
+            <div id="locationError" class="error"></div>
+
+            <div class="button">
+                <button type="button" class="submit-btn" onclick="submitForm()">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Phone</th>
+                <th>Gender</th>
+                <th>Subjects</th>
+                <th>DOB</th>
+                <th>Location</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        let editingRow = null;
+
+        function submitForm() {
+            const name = document.getElementById("Name").value;
+            const age = document.getElementById("Age").value;
+            const phone = document.getElementById("phonenumber").value;
+            const gender = document.querySelector('input[name="gender"]:checked')?.value || '';
+            const subjects = Array.from(document.querySelectorAll('input[name="subject"]:checked'))
+                .map(checkbox => checkbox.value)
+                .join(", ");
+            const dob = document.getElementById("dob").value;
+            const location = document.getElementById("location").value;
+
+            let isValid = true;
+
+            clearErrors();
+
+            if (!name || !/^[a-zA-Z\s]+$/.test(name)) {
+    isValid = false;
+    document.getElementById("nameError").textContent = "Name must contain only letters and spaces.";
+}
+
+
+            if (!age || age < 10 || age > 99) {
+                isValid = false;
+                document.getElementById("ageError").textContent = "Age must be a two-digit number.";
+            }
+
+            if (!phone || phone.length !== 10) {
+                isValid = false;
+                document.getElementById("phoneError").textContent = "Phone number must be 10 digits.";
+            }
+
+            if (!gender) {
+                isValid = false;
+                document.getElementById("genderError").textContent = "Gender is required.";
+            }
+
+            if (!subjects) {
+                isValid = false;
+                document.getElementById("subjectError").textContent = "Please select at least one subject.";
+            }
+
+            if (!dob || !/^\d{4}-\d{2}-\d{2}$/.test(dob)) {
+                isValid = false;
+                document.getElementById("dobError").textContent = "Invalid date of birth format (YYYY-MM-DD).";
+            }
+
+            if (!location) {
+                isValid = false;
+                document.getElementById("locationError").textContent = "Location is required.";
+            }
+
+            if (isValid) {
+                if (editingRow) {
+                    updateRow(editingRow, { name, age, phone, gender, subjects, dob, location });
+                    editingRow = null;
+                } else {
+                    addRow({ name, age, phone, gender, subjects, dob, location });
+                }
+
+                resetForm();
+            }
+        }
+
+        function addRow(data) {
+            const tableBody = document.querySelector("#studentTable tbody");
+            const newRow = tableBody.insertRow();
+
+            newRow.innerHTML = `
+                <td>${data.name}</td>
+                <td>${data.age}</td>
+                <td>${data.phone}</td>
+                <td>${data.gender}</td>
+                <td>${data.subjects}</td>
+                <td>${data.dob}</td>
+                <td>${data.location}</td>
+                <td>
+                    <button class="action-btn edit-btn" onclick="editRow(this)">Edit</button>
+                    <button class="action-btn delete-btn" onclick="deleteRow(this)">Delete</button>
+                </td>
+            `;
+        }
+
+        function updateRow(row, data) {
+            row.cells[0].textContent = data.name;
+            row.cells[1].textContent = data.age;
+            row.cells[2].textContent = data.phone;
+            row.cells[3].textContent = data.gender;
+            row.cells[4].textContent = data.subjects;
+            row.cells[5].textContent = data.dob;
+            row.cells[6].textContent = data.location;
+        }
+
+        function editRow(button) {
+            editingRow = button.parentElement.parentElement;
+            
+            document.getElementById("Name").value = editingRow.cells[0].textContent;
+            document.getElementById("Age").value = editingRow.cells[1].textContent;
+            document.getElementById("phonenumber").value = editingRow.cells[2].textContent;
+            
+            document.querySelector(`input[name="gender"][value="${editingRow.cells[3].textContent}"]`).checked = true;
+
+            const subjects = editingRow.cells[4].textContent.split(", ");
+            document.querySelectorAll('input[name="subject"]').forEach(checkbox => {
+                checkbox.checked = subjects.includes(checkbox.value);
+            });
+
+            document.getElementById("dob").value = editingRow.cells[5].textContent;
+            document.getElementById("location").value = editingRow.cells[6].textContent;
+        }
+
+        function deleteRow(button) {
+            const rowToDelete = button.parentElement.parentElement;
+            if (editingRow === rowToDelete) {
+                editingRow = null;
+                resetForm();
+            }
+            if (confirm("Are you sure you want to delete this entry?")) {
+                rowToDelete.remove();
+            }
+        }
+
+        function resetForm() {
+            document.getElementById("studentForm").reset();
+        }
+
+        function clearErrors() {
+            document.querySelectorAll('.error').forEach(error => {
+                error.textContent = '';
+            });
+        }
+    </script>
+</body>
+</html>

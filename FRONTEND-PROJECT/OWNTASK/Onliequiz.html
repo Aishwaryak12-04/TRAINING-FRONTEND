@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Quiz Web App</title>
+  <style>
+      body {
+      font-family: Arial, sans-serif;
+      height: 100vh; 
+      display: flex;
+      justify-content: center; 
+      align-items: center; 
+      margin: 0;
+      background-color: #1d1a1a;
+    }
+
+    .hidden { 
+      display: none; 
+    }
+
+    .container { 
+      width: 390px; 
+      max-width: 600px;
+      padding: 20px;
+      background-color: #0c9dad; 
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(129, 11, 11, 0.1); 
+    }
+
+    .question { 
+      font-weight: bold; 
+      margin-top: 20px; 
+      color: #333;
+    }
+
+    .btn { 
+      background: #4CAF50; 
+      color: white; 
+      border: none; 
+      padding: 10px 20px; 
+      cursor: pointer; 
+      margin-top: 10px; 
+      border-radius: 5px; /* Rounded button */
+    }
+
+    .btn:hover { 
+      background: #45a049; 
+    }
+
+    .error { 
+      color: red; 
+      font-weight: bold;
+    }
+
+    #loginPage{
+        text-align: center;
+    }
+    #quizPage {
+      background-color: #eaf5e4; 
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    #quizContainer {
+      margin-top: 20px;
+    }
+
+    label {
+      display: block;
+      padding: 5px;
+      background-color: #f9f9f9; 
+      border: 1px solid #ddd; 
+      margin-top: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    label input {
+      margin-right: 10px; 
+    }
+
+    .question {
+      color: #007BFF; 
+    }
+  </style>
+</head>
+<body>
+
+  
+  <div id="loginPage" class="container">
+    <h2>Login to Start the Quiz</h2>
+    <input type="text" id="username" placeholder="Enter your name">
+    <br><br>
+    <input type="email" id="email" placeholder="Enter your email">
+    <br><br>
+    <button class="btn" onclick="startQuiz()">Start Quiz</button>
+    <p id="loginError" class="error hidden">Please enter a valid name and email.</p>
+  </div>
+
+  
+  <div id="quizPage" class="container hidden">
+    <h2>JavaScript Quiz</h2>
+    <div id="quizContainer"></div>
+    <button class="btn" onclick="submitQuiz()">Submit</button>
+  </div>
+
+  
+  <div id="resultPage" class="container hidden">
+    <h2>Your Results</h2>
+    <div id="resultContainer"></div>
+    <button class="btn" onclick="viewRanking()">View Ranking</button>
+  </div>
+
+
+  <div id="dashboardPage" class="container hidden">
+    <h2>Dashboard</h2>
+    <table border="1" width="100%">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Score</th>
+          <th>Rank</th>
+        </tr>
+      </thead>
+      <tbody id="dashboardContainer"></tbody>
+    </table>
+  </div>
+
+  <script>
+    const questions = [
+      { 
+        question: "Which method is used to remove the last element from an array?", 
+        options: [
+          { answer: "pop()", isCorrect: true }, 
+          { answer: "shift()", isCorrect: false }, 
+          { answer: "push()", isCorrect: false }, 
+          { answer: "unshift()", isCorrect: false }
+        ]
+      },
+      { 
+        question: "Which method is used to join all elements of an array into a string?", 
+        options: [
+          { answer: "join()", isCorrect: true }, 
+          { answer: "concat()", isCorrect: false }, 
+          { answer: "slice()", isCorrect: false }, 
+          { answer: "splice()", isCorrect: false }
+        ]
+      },
+      {
+        question: "Which method creates a new array with all elements that pass a test?",
+        options: [
+          { answer: "filter()", isCorrect: true },
+          { answer: "map()", isCorrect: false },
+          { answer: "reduce()", isCorrect: false },
+          { answer: "forEach()", isCorrect: false }
+        ]
+      },
+      {
+        question: "Which of the following is not a valid JavaScript data type?",
+        options: [
+          { answer: "Number", isCorrect: false },
+          { answer: "String", isCorrect: false },
+          { answer: "Float", isCorrect: true },
+          { answer: "Boolean", isCorrect: false }
+        ]
+      },
+      {
+        question: "What will the following code output: `console.log(3 + '3')`?",
+        options: [
+          { answer: "33", isCorrect: true },
+          { answer: "6", isCorrect: false },
+          { answer: "NaN", isCorrect: false },
+          { answer: "Error", isCorrect: false }
+        ]
+      }
+    ];
+
+    let userData = [];
+    let currentUser = { name: "", email: "", score: 0 };
+
+    function startQuiz() {
+      const name = document.getElementById("username").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const loginError = document.getElementById("loginError");
+
+      if (name === "" || !/\S+@\S+\.\S+/.test(email)) {
+        loginError.classList.remove("hidden");
+        return;
+      }
+
+      currentUser.name = name;
+      currentUser.email = email;
+      loginError.classList.add("hidden");
+      document.getElementById("loginPage").classList.add("hidden");
+      document.getElementById("quizPage").classList.remove("hidden");
+
+      loadQuiz();
+    }
+
+    function loadQuiz() {
+      const quizContainer = document.getElementById("quizContainer");
+      quizContainer.innerHTML = "";
+      questions.forEach((q, index) => {
+        const questionElement = document.createElement("div");
+        questionElement.classList.add("question");
+        questionElement.innerHTML = `${index + 1}. ${q.question}`;
+        quizContainer.appendChild(questionElement);
+
+        q.options.forEach((option, i) => {
+          const label = document.createElement("label");
+          const input = document.createElement("input");
+          input.type = "radio";
+          input.name = `q${index}`;
+          input.value = option.answer;
+          label.appendChild(input);
+          label.innerHTML += option.answer;
+          quizContainer.appendChild(label);
+          quizContainer.appendChild(document.createElement("br"));
+        });
+      });
+    }
+
+    function submitQuiz() {
+      let score = 0;
+      const pointsPerQuestion = 2;  
+
+      questions.forEach((q, index) => {
+        const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selectedOption) {
+          const answer = selectedOption.value;
+          if (q.options.find(opt => opt.answer === answer && opt.isCorrect)) {
+            score += pointsPerQuestion;  
+          }
+        }
+      });
+
+      if (score > currentUser.score) {
+        currentUser.score = score;
+      }
+
+      userData = userData.filter(user => user.email !== currentUser.email);
+      userData.push({ ...currentUser });
+      localStorage.setItem("userData", JSON.stringify(userData));
+
+      showResults();
+    }
+
+    function showResults() {
+      document.getElementById("quizPage").classList.add("hidden");
+      document.getElementById("resultPage").classList.remove("hidden");
+
+      const resultContainer = document.getElementById("resultContainer");
+      resultContainer.innerHTML = "";
+      questions.forEach((q, index) => {
+        const correctAnswer = q.options.find(opt => opt.isCorrect).answer;
+        const userAnswer = document.querySelector(`input[name="q${index}"]:checked`)?.value || "Not Answered";
+        resultContainer.innerHTML += `<div><b>${q.question}</b><br>
+          Correct Answer: ${correctAnswer}<br>
+          Your Answer: ${userAnswer}</div><hr>`;
+      });
+    }
+
+    function viewRanking() {
+      document.getElementById("resultPage").classList.add("hidden");
+      document.getElementById("dashboardPage").classList.remove("hidden");
+
+      const dashboardContainer = document.getElementById("dashboardContainer");
+      userData = JSON.parse(localStorage.getItem("userData")) || [];
+      userData.sort((a, b) => b.score - a.score);
+
+      dashboardContainer.innerHTML = userData.map((user, index) => 
+        `<tr><td>${user.name}</td><td>${user.email}</td><td>${user.score}</td><td>${index + 1}</td></tr>`
+      ).join("");
+    }
+  </script>
+
+</body>
+</html>

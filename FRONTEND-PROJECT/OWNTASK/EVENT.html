@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Manager</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .event-form, .event-list {
+      margin: 20px;
+    }
+    .event-item {
+      margin: 10px 0;
+    }
+    .upcoming {
+      color: green;
+    }
+    .past {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Event Manager</h1>
+
+  <!-- Add Event Form -->
+  <div class="event-form">
+    <input type="text" id="event-title" placeholder="Event Title" required>
+    <input type="date" id="event-date" required>
+    <button onclick="addEvent()">Add Event</button>
+  </div>
+
+  <!-- Event Filter -->
+  <div>
+    <button onclick="filterEvents('upcoming')">Show Upcoming Events</button>
+    <button onclick="filterEvents('past')">Show Past Events</button>
+    <button onclick="filterEvents('all')">Show All Events</button>
+  </div>
+
+  <!-- Event List -->
+  <div class="event-list" id="event-list"></div>
+
+  <script>
+    // Store events in an array
+    let events = [];
+
+    // Function to format the date
+    function formatDate(date) {
+      const d = new Date(date);
+      return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
+    }
+
+    // Add event function
+    function addEvent() {
+      const title = document.getElementById('event-title').value;
+      const date = document.getElementById('event-date').value;
+
+      if (!title || !date) {
+        alert("Please fill in both fields.");
+        return;
+      }
+
+      const eventDate = new Date(date);
+      const currentDate = new Date();
+      const status = eventDate > currentDate ? "Upcoming" : "Past";
+
+      const event = { title, date: eventDate, status };
+
+      events.push(event);
+      renderEvents(); // Render all events after adding a new one
+      clearForm();
+    }
+
+    // Render events based on filter
+    function renderEvents(filter = 'all') {
+      const eventList = document.getElementById('event-list');
+      eventList.innerHTML = '';
+
+      const filteredEvents = filterEventsList(filter);
+
+      filteredEvents.forEach((event, index) => {
+        const eventElement = document.createElement('div');
+        eventElement.classList.add('event-item');
+        eventElement.innerHTML = `
+          <div class="${event.status.toLowerCase()}">
+            <strong>${event.title}</strong> - ${formatDate(event.date)} - ${event.status}
+            <button onclick="editEvent(${index})">Edit</button>
+            <button onclick="deleteEvent(${index})">Delete</button>
+          </div>
+        `;
+        eventList.appendChild(eventElement);
+      });
+    }
+
+    // Filter events based on status
+    function filterEvents(filter) {
+      renderEvents(filter);
+    }
+
+    function filterEventsList(filter) {
+      if (filter === 'upcoming') {
+        return events.filter(event => event.status === 'Upcoming');
+      } else if (filter === 'past') {
+        return events.filter(event => event.status === 'Past');
+      } else {
+        return events;
+      }
+    }
+
+    // Edit event function
+    function editEvent(index) {
+      const event = events[index];
+      const newTitle = prompt("Edit event title:", event.title);
+      const newDate = prompt("Edit event date (yyyy-mm-dd):", formatDate(event.date));
+
+      if (newTitle && newDate) {
+        const updatedDate = new Date(newDate);
+        event.title = newTitle;
+        event.date = updatedDate;
+        event.status = updatedDate > new Date() ? "Upcoming" : "Past";
+        renderEvents();
+      }
+    }
+
+    // Delete event function
+    function deleteEvent(index) {
+      events.splice(index, 1);
+      renderEvents();
+    }
+
+    // Clear form inputs
+    function clearForm() {
+      document.getElementById('event-title').value = '';
+      document.getElementById('event-date').value = '';
+    }
+
+    // Initialize by rendering all events
+    renderEvents('all');
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Rental Application</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Car Rental Application</h1>
+    <nav>
+      <button onclick="showSection('home')">Home</button>
+      <button onclick="showSection('booking')">Booking</button>
+      <button onclick="showSection('admin')">Admin Panel</button>
+    </nav>
+  </header>
+
+  <!-- Home Page -->
+  <section id="home">
+    <h2>Available Cars for Rent</h2>
+    <div class="car-list" id="car-list"></div>
+  </section>
+
+  <!-- Booking Page -->
+  <section id="booking" style="display: none;">
+    <h2>Book Your Car</h2>
+    <form id="booking-form">
+      <p id="selected-car"></p>
+      <label for="start-date">Start Date:</label>
+      <input type="date" id="start-date" required>
+      <label for="end-date">End Date:</label>
+      <input type="date" id="end-date" required>
+      <button type="submit">Confirm Booking</button>
+    </form>
+    <div id="confirmation" style="display: none;"></div>
+  </section>
+
+  <!-- Admin Panel -->
+  <section id="admin" style="display: none;">
+    <h2>Admin Panel</h2>
+    <form id="add-car-form">
+      <input type="text" id="car-name" placeholder="Car Model" required>
+      <input type="number" id="car-price" placeholder="Price Per Day ($)" required>
+      <input type="file" id="car-image" accept="image/*" required>
+      <button type="submit">Add Car</button>
+    </form>
+    <div class="car-list" id="admin-car-list"></div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
