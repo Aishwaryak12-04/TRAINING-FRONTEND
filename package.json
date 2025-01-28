@@ -1,0 +1,20 @@
+{
+  "name": "frontendd-training",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aishwaryak12-04/TRAINING-FRONTEND.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aishwaryak12-04/TRAINING-FRONTEND/issues"
+  },
+  "homepage": "https://github.com/Aishwaryak12-04/TRAINING-FRONTEND#readme",
+  "description": ""
+}
