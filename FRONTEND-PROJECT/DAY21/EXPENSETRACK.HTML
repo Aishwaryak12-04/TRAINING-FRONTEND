@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 20px;
+      background-color: rgb(245, 14, 29);
+    }
+    h1 {
+      text-align: center;
+      color: #121111;
+    }
+    .form-container, .expense-container {
+      margin-bottom: 20px;
+      padding: 20px;
+      border: 1px solid #ca1515;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+    .form-container input, select {
+      margin-bottom: 10px;
+      padding: 8px;
+      width: 95%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .expense-list table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    .expense-list table th, td {
+      border: 1px solid #ddd;
+      text-align: center;
+      padding: 8px;
+    }
+    .filter-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .filter-container select, .filter-container input {
+      padding: 8px;
+      width: 48%;
+    }
+    .total-expense {
+      text-align: right;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Expense Tracker</h1>
+  <div class="form-container">
+    <h3>Add Expense</h3>
+    <input type="text" id="expenseName" placeholder="Expense Name">
+    <input type="number" id="expenseAmount" placeholder="Amount">
+    <select id="expenseCategory">
+      <option value="Food">Food</option>
+      <option value="Travel">Travel</option>
+      <option value="Shopping">Shopping</option>
+    </select>
+    <button onclick="addExpense()">Add Expense</button>
+  </div>
+  
+  <div class="filter-container">
+    <select id="filterCategory" onchange="filterByCategory()">
+      <option value="">Filter by Category</option>
+      <option value="Food">Food</option>
+      <option value="Travel">Travel</option>
+      <option value="Shopping">Shopping</option>
+    </select>
+    <select id="filterTime" onchange="filterByTime()">
+      <option value="">Filter by Time</option>
+      <option value="7">Last Week</option>
+      <option value="30">Last Month</option>
+      <option value="180">Last 6 Months</option>
+      <option value="365">Last Year</option>
+    </select>
+  </div>
+  
+  <div class="expense-container">
+    <h3>Expense List</h3>
+    <div class="expense-list">
+      <table id="expenseTable">
+        <thead>
+          <tr>
+            <th>Expense Name</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="total-expense" id="totalExpense">Total Expense: ₹0</p>
+  </div>
+
+  <script>
+    const expenseTable = document.querySelector("#expenseTable tbody");
+    const totalExpense = document.getElementById("totalExpense");
+    let expenses = [];
+
+    function addExpense() {
+      const name = document.getElementById("expenseName").value;
+      const amount = parseFloat(document.getElementById("expenseAmount").value);
+      const category = document.getElementById("expenseCategory").value;
+      const date = new Date().toISOString().split("T")[0]; // Default to today
+
+      if (!name || isNaN(amount) || amount <= 0) {
+        alert("Please enter valid details!");
+        return;
+      }
+
+      const expense = { name, amount, category, date };
+      expenses.push(expense);
+      renderExpenses();
+    }
+
+    function renderExpenses(filteredExpenses = expenses) {
+      expenseTable.innerHTML = "";
+      filteredExpenses.forEach((expense, index) => {
+        const row = `<tr>
+          <td>${expense.name}</td>
+          <td>₹${expense.amount.toFixed(2)}</td>
+          <td>${expense.category}</td>
+          <td contenteditable="true">${expense.date}</td>
+          <td>
+            <button onclick="editExpense(${index})">Edit</button>
+            <button onclick="deleteExpense(${index})">Delete</button>
+          </td>
+        </tr>`;
+        expenseTable.innerHTML += row;
+      });
+
+      const total = filteredExpenses.reduce((sum, e) => sum + e.amount, 0);
+      totalExpense.textContent = `Total Expense: ₹${total.toFixed(2)}`;
+    }
+
+    function deleteExpense(index) {
+      expenses.splice(index, 1);
+      renderExpenses();
+    }
+
+    function editExpense(index) {
+      const row = expenseTable.rows[index];
+      expenses[index].name = row.cells[0].innerText;
+      expenses[index].amount = parseFloat(row.cells[1].innerText.replace("₹", ""));
+      expenses[index].category = row.cells[2].innerText;
+      expenses[index].date = row.cells[3].innerText;
+      renderExpenses();
+    }
+
+    function filterByCategory() {
+      const category = document.getElementById("filterCategory").value;
+      const filtered = category ? expenses.filter(e => e.category === category) : expenses;
+      renderExpenses(filtered);
+    }
+
+    function filterByTime() {
+      const days = parseInt(document.getElementById("filterTime").value);
+      const now = new Date();
+      const filtered = days
+        ? expenses.filter(e => {
+            const diff = Math.floor((now - new Date(e.date)) / (1000 * 60 * 60 * 24));
+            return diff <= days;
+          })
+        : expenses;
+      renderExpenses(filtered);
+    }
+  </script>
+</body>
+</html>

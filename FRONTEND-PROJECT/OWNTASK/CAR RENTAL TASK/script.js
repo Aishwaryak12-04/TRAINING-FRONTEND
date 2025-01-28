@@ -7,7 +7,6 @@ const cars = [
     { name: "BMW X5", price: 100, image: "./Images/IMAGE1.jpeg" },
   ];
   
-  // Populate home page
   const carList = document.getElementById("car-list");
   function displayCars() {
     carList.innerHTML = "";
@@ -25,7 +24,6 @@ const cars = [
   }
   displayCars();
   
-  // Handle "Book Now" button
   function selectCar(index) {
     const selectedCar = cars[index];
     localStorage.setItem("selectedCar", JSON.stringify(selectedCar));
@@ -33,7 +31,6 @@ const cars = [
     showSection("booking");
   }
   
-  // Booking page functionality
   document.getElementById("booking-form").addEventListener("submit", (e) => {
     e.preventDefault();
     const car = JSON.parse(localStorage.getItem("selectedCar"));
@@ -63,7 +60,7 @@ const cars = [
     document.getElementById("confirmation").style.display = "block";
   });
   
-  // Admin Panel
+
   document.getElementById("add-car-form").addEventListener("submit", (e) => {
     e.preventDefault();
     const name = document.getElementById("car-name").value;
@@ -75,22 +72,9 @@ const cars = [
     alert("Car added successfully!");
   });
   
-  // Navigation
   function showSection(section) {
     document.querySelectorAll("section").forEach((s) => (s.style.display = "none"));
     document.getElementById(section).style.display = "block";
  }
-//   cars.forEach((car) => {
-//     const carCard = document.createElement("div");
-//     carCard.className = "car-card";
-  
-//     carCard.innerHTML = `
-//       <img src="${car.image}" alt="${car.name}" class="car-image">
-//       <h3>${car.name}</h3>
-//       <p>Price per day: $${car.price}</p>
-//       <button class="book-now">Book Now</button>
-//     `;
-  
-//     carList.appendChild(carCard);
-//   });
+
   

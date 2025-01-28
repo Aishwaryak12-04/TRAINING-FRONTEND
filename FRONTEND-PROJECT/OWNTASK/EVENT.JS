@@ -5,7 +5,6 @@ const eventForm = document.getElementById("event-form");
 const eventList = document.getElementById("event-list");
 const filterSelect = document.getElementById("filter");
 
-// Add Event
 eventForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const title = document.getElementById("event-title").value;
@@ -22,14 +21,12 @@ eventForm.addEventListener("submit", (e) => {
   eventForm.reset();
 });
 
-// Calculate Event Status
 function calculateStatus(date) {
   const today = new Date();
   const eventDate = new Date(date);
   return eventDate >= today ? "Upcoming" : "Past";
 }
 
-// Render Events
 function renderEvents() {
   eventList.innerHTML = "";
   const filteredEvents = events.filter((event) =>
@@ -53,7 +50,7 @@ function renderEvents() {
   });
 }
 
-// Edit Event
+
 function editEvent(index) {
   const event = events[index];
   document.getElementById("event-title").value = event.title;
@@ -62,13 +59,12 @@ function editEvent(index) {
   renderEvents();
 }
 
-// Delete Event
 function deleteEvent(index) {
   events.splice(index, 1);
   renderEvents();
 }
 
-// Filter Events
+
 function filterEvents() {
   currentFilter = filterSelect.value;
   renderEvents();
