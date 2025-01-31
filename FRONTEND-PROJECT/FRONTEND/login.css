@@ -1,0 +1,217 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background:url("login-bg.png");
+    font-family: 'Arial', sans-serif;
+    animation: slideBackground 10s infinite linear;
+}
+@keyframes slideBackground {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+/* Bird Container */
+.bird-container {
+    position: absolute;
+    top: 30%;
+    left: -10%;
+    animation: flyAcross 10s linear infinite;
+    z-index: -1; /* Behind login box */
+}
+
+/* Bird Flying Animation */
+@keyframes flyAcross {
+    0% {
+        transform: translate(-10vw, 10vh);
+    }
+    50% {
+        transform: translate(50vw, -5vh);
+    }
+    100% {
+        transform: translate(110vw, 15vh);
+    }
+}
+
+/* Bird Styling */
+.bird {
+    position: relative;
+    width: 100px;
+    height: 80px;
+}
+
+/* Body */
+.body {
+    width: 60px;
+    height: 40px;
+    background: gray;
+    border-radius: 50%;
+    position: absolute;
+    left: 20px;
+}
+
+/* Head */
+.head {
+    width: 30px;
+    height: 30px;
+    background: gray;
+    border-radius: 50%;
+    position: absolute;
+    left: 65px;
+    top: 5px;
+}
+
+/* Eye */
+.eye {
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+/* Beak */
+.beak {
+    width: 15px;
+    height: 10px;
+    background: orange;
+    border-radius: 50%;
+    position: absolute;
+    left: 28px;
+    top: 15px;
+}
+
+/* Wings */
+.wings {
+    position: absolute;
+    top: -5px;
+    left: 10px;
+    width: 50px;
+    height: 50px;
+    animation: flap 0.3s infinite alternate ease-in-out;
+}
+
+.wing {
+    width: 50px;
+    height: 20px;
+    background: gray;
+    border-radius: 50%;
+    position: absolute;
+}
+
+/* Tail */
+.tail {
+    width: 20px;
+    height: 20px;
+    background: gray;
+    border-radius: 50%;
+    position: absolute;
+    left: 0px;
+    top: 15px;
+}
+
+/* Legs */
+.leg-1,
+
+
+.leg-1 {
+    left: 20px;
+}
+
+.leg-2 {
+    left: 30px;
+}
+
+/* Wing Flapping */
+@keyframes flap {
+    from {
+        transform: rotate(10deg);
+    }
+    to {
+        transform: rotate(-10deg);
+    }
+}
+
+
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.login-box {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    width: 350px;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    font-weight: bold;
+    display: block;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #e64a19;
+}
+
+.signup-link {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.signup-link a {
+    color: #ff5722;
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}

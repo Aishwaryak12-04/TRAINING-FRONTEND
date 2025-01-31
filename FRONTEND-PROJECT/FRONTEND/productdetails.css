@@ -1,0 +1,30 @@
+body {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    animation: changeBackground 5s infinite alternate; 
+}
+
+
+@keyframes changeBackground {
+    0% {
+        background: #e90408; /* Start with a red color */
+    }
+    50% {
+        background: #ff9800; /* Transition to orange */
+    }
+    100% {
+        background: #4caf50; /* Transition to green */
+    }
+}
+
+
+#product-info {
+    background: rgb(253, 252, 252);
+    padding: 20px;
+    margin: 50px auto;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
