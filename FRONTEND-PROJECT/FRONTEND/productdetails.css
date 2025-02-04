@@ -9,13 +9,13 @@ body {
 
 @keyframes changeBackground {
     0% {
-        background: #e90408; /* Start with a red color */
+        background: #e90408; 
     }
     50% {
-        background: #ff9800; /* Transition to orange */
+        background: #ff9800; 
     }
     100% {
-        background: #4caf50; /* Transition to green */
+        background: #4caf50; 
     }
 }
 
